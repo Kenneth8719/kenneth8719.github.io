@@ -9,22 +9,23 @@
     
     <style>
         :root {
-    --bg-primary: #0c1f2e;
-    --bg-secondary: #102a3d;
-    --bg-card: #163449;
-    
-    --accent: #2dd4bf;         
-    --accent-secondary: #06b6d4;  
-    
-    --text-primary: #f0fdfa;    
-    --text-secondary: #99f6e4; 
-    
-    --border: rgba(45, 212, 191, 0.2);
-    --gradient: linear-gradient(135deg, #2dd4bf 0%, #06b6d4 50%, #0ea5e9 100%);
-    --glow: 0 0 30px rgba(45, 212, 191, 0.3);
-    
-    --grid-color: rgba(45, 212, 191, 0.05);
-}
+            /* 医疗清新白底色系 */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f0f9ff;
+            --bg-card: #ffffff;
+            
+            --accent: #0ea5e9;
+            --accent-secondary: #10b981;
+            
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            
+            --border: #e2e8f0;
+            --gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #10b981 100%);
+            --glow: 0 4px 20px rgba(14, 165, 233, 0.15);
+            
+            --grid-color: rgba(14, 165, 233, 0.05);
+        }
 
         * {
             margin: 0;
@@ -51,13 +52,8 @@
             background-image: 
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            background-size: 60px 60px;
+            opacity: 0.6;
         }
 
         /* Navigation */
@@ -65,16 +61,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         nav.scrolled {
-            background: rgba(10, 10, 15, 0.95);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
         }
 
         .nav-container {
@@ -122,7 +119,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
         .nav-links a:hover::after {
@@ -161,8 +158,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             position: relative;
             overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
         }
 
         .hero-content {
@@ -174,7 +194,7 @@
         .hero-badge {
             display: inline-block;
             padding: 0.5rem 1.5rem;
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(14, 165, 233, 0.1);
             border: 1px solid var(--accent);
             border-radius: 50px;
             color: var(--accent);
@@ -183,12 +203,6 @@
             margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
         }
 
         .hero h1 {
@@ -241,23 +255,24 @@
         .btn-primary {
             background: var(--gradient);
             color: white;
-            box-shadow: var(--glow);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: white;
             color: var(--text-primary);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
         }
 
         .btn-secondary:hover {
             border-color: var(--accent);
-            background: rgba(0, 212, 255, 0.05);
+            color: var(--accent);
+            background: var(--bg-secondary);
         }
 
         /* Floating Shapes */
@@ -274,8 +289,7 @@
             border-radius: 50%;
             background: var(--gradient);
             filter: blur(100px);
-            opacity: 0.15;
-            animation: float 20s infinite ease-in-out;
+            opacity: 0.05;
         }
 
         .shape-1 { width: 400px; height: 400px; top: 10%; left: -10%; animation-delay: 0s; }
@@ -305,9 +319,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
             display: block;
         }
 
@@ -361,7 +373,7 @@
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            background: var(--bg-card);
+            background: var(--bg-secondary);
             aspect-ratio: 4/3;
             display: flex;
             align-items: center;
@@ -369,12 +381,10 @@
             border: 1px solid var(--border);
         }
 
-        .about-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient);
-            opacity: 0.1;
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-content h3 {
@@ -404,9 +414,18 @@
         }
 
         .feature-list li::before {
-            content: '→';
-            color: var(--accent);
+            content: '✓';
+            color: var(--accent-secondary);
             font-weight: bold;
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
         /* Products Section */
@@ -457,8 +476,8 @@
 
         .product-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(14, 165, 233, 0.3);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1);
         }
 
         .product-card:hover::before {
@@ -466,16 +485,22 @@
         }
 
         .product-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 212, 255, 0.1);
+            width: 80px;
+            height: 80px;
+            background: transparent;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            border: none;
+            overflow: hidden;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .product-card h3 {
@@ -498,11 +523,11 @@
 
         .tag {
             padding: 0.25rem 0.75rem;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
             border-radius: 50px;
             font-size: 0.75rem;
-            color: var(--accent-secondary);
+            color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -543,7 +568,7 @@
 
         /* Footer */
         footer {
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border-top: 1px solid var(--border);
             padding: 4rem 0 2rem;
         }
@@ -597,6 +622,7 @@
         .social-links a {
             width: 40px;
             height: 40px;
+            background: white;
             border: 1px solid var(--border);
             border-radius: 50%;
             display: flex;
@@ -610,10 +636,11 @@
         }
 
         .social-links a:hover {
+            background: var(--accent);
             border-color: var(--accent);
-            color: var(--accent);
+            color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
         }
 
         .footer-bottom {
@@ -642,6 +669,43 @@
 
         .legal-links a:hover {
             color: var(--accent);
+        }
+
+        /* Newsletter Form */
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-secondary);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         /* Responsive */
@@ -703,43 +767,6 @@
 
         .product-card:hover .glow-effect {
             opacity: 0.1;
-        }
-
-        /* Newsletter Form */
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-        }
-
-        .newsletter-form input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .newsletter-form button {
-            padding: 0.75rem 1.5rem;
-            background: var(--accent);
-            border: none;
-            border-radius: 6px;
-            color: var(--bg-primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--text-primary);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
     </style>
 </head>
@@ -815,13 +842,13 @@
         
         <div class="about-grid reveal">
             <div class="about-image">
-                <div style="font-size: 4rem; opacity: 0.5;">🏢</div>
+                <img src="image/OF3.png" alt="ENERTECH Facility">
             </div>
             <div class="about-content">
                 <h3>Innovation Driven, Technology First</h3>
                 <p>China Enertech Industrial Development Co., Ltd. is an international advanced ceramics enterprise specializing in the research, development, and manufacturing of high-performance ceramic materials. Established in April 2017 and headquartered in Hong Kong, the company has rapidly evolved into a significant player in the global ceramics industry through continuous innovation and strategic expansion.</p>
                 <p>Initially focused on energy-saving industrial ceramics, Enertech has built a strong technological foundation in material science and engineering applications. In 2020, the company strategically entered the high-growth dental ceramics sector, leveraging its core expertise to produce and distribute premium dental zirconia and lithium disilicate ceramics. These products are widely recognized for their superior strength, biocompatibility, and aesthetic properties, meeting the exacting demands of modern restorative dentistry.</p>
-                <p>With multiple specialized manufacturing facilities across Mainland China, Enertech operates an integrated supply chain that ensures stringent quality control, scalable production, and consistent supply to markets worldwide. The company’s products serve a diverse client base across Asia, Europe, North America, and beyond, supporting dental laboratories, healthcare institutions, and distributors with reliable, high-performance ceramic solutions.</p>
+                <p>With multiple specialized manufacturing facilities across Mainland China, Enertech operates an integrated supply chain that ensures stringent quality control, scalable production, and consistent supply to markets worldwide. The company's products serve a diverse client base across Asia, Europe, North America, and beyond, supporting dental laboratories, healthcare institutions, and distributors with reliable, high-performance ceramic solutions.</p>
  		  <p>Committed to sustainability and innovation, Enertech invests significantly in R&D to advance material technologies and develop new applications across industrial and biomedical fields. By combining advanced manufacturing capabilities with a customer-oriented approach, China Enertech continues to strengthen its global presence, driving progress in ceramic technology and contributing to a more efficient and healthier world</p>
                 </ul>
             </div>
@@ -840,7 +867,9 @@
             <div class="product-grid">
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">☁️</div>
+                    <div class="product-icon">
+                        <img src="image/Industrial Ceramics.png" alt="Industrial Ceramic Materials">
+                    </div>
                     <h3>Industrial Ceramic Materials</h3>
                     <p>Focus on advanced ceramic applications in semiconductors, automotive electronics, new energy, consumer electronics, communications, and lasers. Product line includes ceramic substrates, heating components for electronic cigarette atomization devices, high-end ceramic structural components, and exterior components, among others.</p>
                     <div class="product-tags">
@@ -852,7 +881,9 @@
 
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">🤖</div>
+                    <div class="product-icon">
+                        <img src="image/Zir.Blank.png" alt="Dental Ceramics">
+                    </div>
                     <h3>Dental Ceramics</h3>
                     <p>Integrated Leveraging its strong ceramic technology, the company has deeply cultivated the dental zirconia material market, forming a product line covering various models including white zirconia, monochrome zirconia, and layered zirconia.</p>
                     <div class="product-tags">
@@ -864,7 +895,9 @@
 
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">🔒</div>
+                    <div class="product-icon">
+                        <img src="image/PGC1.png" alt="Dental Lithium Disilicate">
+                    </div>
                     <h3>Dental Lithium Disilicate</h3>
                     <p>High light translucency, wear resistance, biocompatibility, stability, and easy processing.can be used for different types of restorations.</p>
                     <div class="product-tags">
@@ -876,7 +909,9 @@
 
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">📊</div>
+                    <div class="product-icon">
+                        <img src="image/Coloring Liquid.png" alt="Dental Zirconia Accessories">
+                    </div>
                     <h3>Dental Zirconia Accessories</h3>
                     <p>Highly compatible zirconia staining solution, and incisal part enhancement solution, etc..</p>
                     <div class="product-tags">
@@ -888,7 +923,9 @@
 
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">🌐</div>
+                    <div class="product-icon">
+                        <img src="image/Implant Accessories.png" alt="Dental Accessories">
+                    </div>
                     <h3>Dental Accessories</h3>
                     <p>Titanium accessories for Implant, titanium premill, analog, abutment etc,.</p>
                     <div class="product-tags">
@@ -900,7 +937,9 @@
 
                 <div class="product-card reveal" onmousemove="handleGlow(event, this)" onmouseleave="removeGlow(this)">
                     <div class="glow-effect"></div>
-                    <div class="product-icon">🔗</div>
+                    <div class="product-icon">
+                        <img src="image/Burs.png" alt="Other Accessories">
+                    </div>
                     <h3>Other Accessories</h3>
                     <p>Glaze Paste, Precision-crafted for high-end aesthetic workflows, ensuring seamless integration and superior finish. Dental milling burs.</p>
                     <div class="product-tags">
